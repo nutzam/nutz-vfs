@@ -39,6 +39,9 @@
 			<compilerarg value="-Xlint:all" />
 			<classpath refid="CLASSPATH" />
 		</javac>
+		<copy todir="${TMP}">
+			<fileset dir="${SRC}" excludes="**/*.java" />
+		</copy>
 	</target>
 
 	<target name="jar" depends="compile">
@@ -46,6 +49,9 @@
 		<jar destfile="${DEST}/nutz-vfs-${v}.jar" 
 			 basedir="${TMP}"
 			 includes="**" />
+		<jar destfile="${DEST}/nutz-vfs-${v}-source.jar"
+					 basedir="${SRC}"
+				     includes="**"/>
 	</target>
 
 	<target name="run" depends="jar">
